@@ -5,10 +5,10 @@ import json.AST._
 
 /** A DSL to produce valid JSON.
  * Example:<pre>
- * import com.codahale.jerkson.DSL.WithJFloat._
+ * import org.scalatra.jackson.DSL.WithJFloat._
  * ("name", "joe") ~ ("age", 15) == JObject(JField("name",JString("joe")) :: JField("age",JInt(15)) :: Nil)
  *
- * import com.codahale.jerkson.DSL.WithJDecimal._
+ * import org.scalatra.jackson.DSL.WithJDecimal._
  * ("name", "joe") ~ ("age", 15) == JObject(JField("name",JString("joe")) :: JField("age",JInt(15)) :: Nil)
  * </pre>
  */
@@ -16,10 +16,10 @@ object DSL {
 
   /** Basic implicit conversions from primitive types into JSON.
    * Example:<pre>
-   * import com.codahale.jerkson.DSL.JFloatImplicits._
+   * import org.scalatra.jackson.DSL.JFloatImplicits._
    * JObject(JField("name", "joe") :: Nil) == JObject(JField("name", JString("joe")) :: Nil)
    *
-   * import com.codahale.jerkson.DSL.JDecimalImplicits._
+   * import org.scalatra.jackson.DSL.JDecimalImplicits._
    * JObject(JField("name", "joe") :: Nil) == JObject(JField("name", JString("joe")) :: Nil)
    * </pre>
    */
@@ -90,15 +90,17 @@ object DSL {
   trait WithJDecimal extends DSL with BigDecimalModeImplicits
   /** A DSL to produce valid JSON.
    * Example:<pre>
-   * import com.codahale.jerkson.DSL.WithJDecimal._
+   * import org.scalatra.jackson.DSL.WithJDecimal._
    * ("name", "joe") ~ ("age", 15) == JObject(JField("name",JString("joe")) :: JField("age",JInt(15)) :: Nil)
    * </pre>
    */
   object WithJDecimal extends WithJDecimal
+  
+  
   trait WithJFloat extends DSL with DoubleModeImplicits
   /** A DSL to produce valid JSON.
    * Example:<pre>
-   * import com.codahale.jerkson.DSL.WithJFloat._
+   * import org.scalatra.jackson.DSL.WithJFloat._
    * ("name", "joe") ~ ("age", 15) == JObject(JField("name",JString("joe")) :: JField("age",JInt(15)) :: Nil)
    * </pre>
    */

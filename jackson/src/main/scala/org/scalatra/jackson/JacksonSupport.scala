@@ -2,14 +2,19 @@ package org.scalatra
 package jackson
 
 import java.io.InputStream
-import com.fasterxml.jackson.databind.node.MissingNode
+import json.AST._
+import json.Xml.toJson
 
 trait JacksonSupport extends json.JsonSupport with JacksonOutput {
+  
   protected def readJsonFromStream(stream: InputStream): JsonType =
-    jsonMapper.readTree(stream)
+    jsonMapper.readValue(stream, classOf[JValue])
 
-  protected def readXmlFromStream(stream: InputStream): JsonType =
-    xmlMapper.readTree(stream)
+  protected def readXmlFromStream(stream: InputStream): JsonType = {
+    val JObject(JField(_, jv) :: Nil) = toJson(scala.xml.XML.load(stream))
+    jv
+  }
+    
 
-  protected val jsonZero: JsonType = MissingNode.getInstance()
+  protected val jsonZero: JsonType = JNothing
 }
