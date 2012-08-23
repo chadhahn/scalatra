@@ -7,6 +7,8 @@ import com.fasterxml.jackson.module.scala.DefaultScalaModule
 import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import xml.XML
 import com.fasterxml.jackson.core.JsonGenerator
+import com.fasterxml.jackson.module.scala.DefaultScalaModule
+import com.fasterxml.jackson.module.scala.ScalaModule
 
 private[jackson] trait JacksonOutput extends json.JsonOutput {
 
@@ -19,6 +21,8 @@ private[jackson] trait JacksonOutput extends json.JsonOutput {
   configureJackson(xmlMapper)
 
   protected def configureJackson(mapper: ObjectMapper) {
+    val scalaModule = new DefaultScalaModule
+    
     mapper.registerModule(DefaultScalaModule)
     mapper.configure(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS, useBigDecimalForFloats)
     mapper.configure(DeserializationFeature.USE_BIG_INTEGER_FOR_INTS, useBigIntForInts)
