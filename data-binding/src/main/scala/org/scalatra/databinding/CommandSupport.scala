@@ -10,7 +10,7 @@ import org.joda.time.DateTime
 
 
 /**
-* Support for [[org.scalatra.command.Command]] binding and validation.
+* Support for [[org.scalatra.databinding.Command]] binding and validation.
 */
 trait CommandSupport extends TypeConverterFactories with ParamsValueReaderProperties {
 
