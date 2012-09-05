@@ -147,8 +147,11 @@ trait BindingSyntax extends BindingValidatorImplicits {
   def asString(name: String): FieldDescriptor[String] = FieldDescriptor[String](name)
   def asDate(name: String): FieldDescriptor[Date] = FieldDescriptor[Date](name)
   def asDateTime(name: String): FieldDescriptor[DateTime] = FieldDescriptor[DateTime](name)
-  def asSeq[T](name: String): FieldDescriptor[Seq[T]] = FieldDescriptor[Seq[T]](name)
 
+  def asSeq[T](name: String): FieldDescriptor[Seq[T]] = FieldDescriptor[List[T]](name)
+  def asSet[T](name: String): FieldDescriptor[Set[T]] = FieldDescriptor[Set[T]](name)
+  def asIndexedSeq[T](name: String): FieldDescriptor[IndexedSeq[T]] = FieldDescriptor[IndexedSeq[T]](name)
+  def asList[T](name: String): FieldDescriptor[List[T]] = FieldDescriptor[List[T]](name)
 
 }
 

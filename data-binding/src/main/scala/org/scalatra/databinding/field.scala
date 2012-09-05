@@ -11,7 +11,7 @@ import mojolly.inflector.InflectorImports._
 object FieldDescriptor {
   def apply[T:Zero](name: String): FieldDescriptor[T] = new BasicFieldDescriptor[T](name, transformations = identity)
 }
-trait FieldDescriptor[T] {
+trait FieldDescriptor[+T] {
 
   def name: String
   def value: FieldValidation[T]
